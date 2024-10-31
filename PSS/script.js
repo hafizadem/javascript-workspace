@@ -58,6 +58,7 @@ function judge(){
     result.innerHTML=resulty
 }
 
+
 // console.log(3>4);
 
 // var b = 60
