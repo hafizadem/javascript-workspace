@@ -1,27 +1,33 @@
-const choices = ["Paper", "Scissors", "Stone"];
-const resultDiv = document.getElementById('result');
+document.addEventListener('DOMContentLoaded', function () {
+    const profileUrl = 'https://jsonplaceholder.typicode.com/users/1';
+    const postsUrl = 'https://jsonplaceholder.typicode.com/posts?userId=1';
 
-document.getElementById('paper').addEventListener('click', () => playGame('Paper'));
-document.getElementById('scissors').addEventListener('click', () => playGame('Scissors'));
-document.getElementById('stone').addEventListener('click', () => playGame('Stone'));
-
-function playGame(playerChoice) {
-    const computerChoice = choices[Math.floor(Math.random() * 3)];
-    const result = getResult(playerChoice, computerChoice);
-    resultDiv.textContent = `You chose ${playerChoice}, computer chose ${computerChoice}. ${result}`;
-}
-
-function getResult(player, computer) {
-    if (player === computer) {
-        return "It's a tie!";
+    async function loadUserProfile() {
+        try {
+            const response = await fetch(profileUrl);
+            const user = await response.json();
+            document.getElementById('username').textContent = user.name;
+            document.getElementById('email').textContent = user.email;
+        } catch (error) {
+            console.error('Error loading user profile:', error);
+        }
     }
-    if (
-        (player === "Paper" && computer === "Stone") ||
-        (player === "Scissors" && computer === "Paper") ||
-        (player === "Stone" && computer === "Scissors")
-    ) {
-        return "You win!";
-    } else {
-        return "You lose!";
+
+    async function loadPosts() {
+        try {
+            const response = await fetch(postsUrl);
+            const posts = await response.json();
+            const postsList = document.getElementById('posts');
+            posts.forEach(post => {
+                const postItem = document.createElement('li');
+                postItem.textContent = post.title;
+                postsList.appendChild(postItem);
+            });
+        } catch (error) {
+            console.error('Error loading posts:', error);
+        }
     }
-}
+
+    loadUserProfile();
+    loadPosts();
+});

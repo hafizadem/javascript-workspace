@@ -3,25 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paper Scissors Stone Game</title>
+    <title>Profile and Posts</title>
     <link rel="stylesheet" href="copilet.css">
 </head>
 <body>
-    <div class="quote-container">
-        <div class="quote">"Imagination is more important than knowledge."</div>
-        <!-- <div class="quote">- Albert Einstein</div> -->
-    </div>
-    
-    <div class="game-container">
-        <h1>Paper, Scissors, Stone</h1>
-        <div class="button-container">
-            <button class="button" id="paper">Paper</button>
-            <button class="button" id="scissors">Scissors</button>
-            <button class="button" id="stone">Stone</button>
-        </div>
-        <div id="result" class="result"></div>
-    </div>
-
+    <header>
+        <h1>Profile and Posts</h1>
+    </header>
+    <main>
+        <section id="profile">
+            <h2>User Profile</h2>
+            <p><strong>Name:</strong> <span id="username"></span></p>
+            <p><strong>Email:</strong> <span id="email"></span></p>
+        </section>
+        <section id="posts-section">
+            <h2>User Posts</h2>
+            <ul id="posts"></ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Profile and Posts</p>
+    </footer>
     <script src="copilet.js"></script>
 </body>
 </html>
